@@ -10,7 +10,7 @@ There are two versions of the conversion script. The default `convert.sh` conver
 >[!TIP]
 >If you do not want to install extra dependencies on your system, run the Docker version of the script.
 
-## *Recommended:* Convert .epub to .pdf (Docker)
+## *Recommended:* Convert `.epub` to `.pdf` (Docker)
 
 >[!NOTE]
 >To use the local script, you need [Docker](https://docs.docker.com/get-started/get-docker/) installed on your system.
@@ -21,7 +21,7 @@ Simply copy the following command to your terminal and adjust the file path.
 curl -fsSL https://epub-to-remarkable-pdf.fjelloverflow.dev/convert-docker.sh | bash -s /path/to/your/file.epub
 ```
 
-## Convert .epub to .pdf (Local)
+## Convert `.epub` to `.pdf` (Local)
 
 >[!NOTE]
 >To use the local script, you need [Calibre](https://calibre-ebook.com/) and the `Georgia` font installed on your system.
@@ -29,7 +29,7 @@ curl -fsSL https://epub-to-remarkable-pdf.fjelloverflow.dev/convert-docker.sh | 
 Simply copy the following command to your terminal and adjust the file path.
 
 ```bash
-curl -fsSL https://epub-to-remarkable-pdf.fjelloverflow.dev/convert-docker.sh | bash -s /path/to/your/file.epub
+curl -fsSL https://epub-to-remarkable-pdf.fjelloverflow.dev/convert.sh | bash -s /path/to/your/file.epub
 ```
 
 ## Upload file to reMarkable Device

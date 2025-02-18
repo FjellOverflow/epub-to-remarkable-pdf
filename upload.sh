@@ -19,6 +19,12 @@ then
     exit_with_warning "File $FILE does not exist."
 fi
 
+# check that curl available
+if ! command -v "curl" >/dev/null 2>&1
+then
+    exit_with_warning "curl not installed."
+fi
+
 # check that reMarkable web-ui is reachable
 ping -c 1 $WEBUI_IP > /dev/null 2>&1
 
@@ -26,7 +32,6 @@ if [ $? -ne 0 ]
 then
     exit_with_warning "Couldn't reach reMarkable. Is the device plugged in and 'USB connection' enabled in 'Settings' -> 'Storage'?"
 fi
-
 
 # upload via ReST
 curl -s -o /dev/null \

@@ -1,14 +1,10 @@
 #!/usr/bin/env bash
 
 FONT="Georgia"
-
 FILE="$1"
-RED='\033[0;31m'
-GREEN='\033[0;32m' 
-NONE='\033[0m'
 
 exit_with_warning () {
-    echo -e "${RED}$1${NONE}"
+    echo -e "\033[0;31m$1\033[0m"
     exit 1
 }
 
@@ -22,9 +18,9 @@ then
     exit_with_warning "File $FILE does not exist."
 fi
 
-if ! file --mime-type -b "$FILE" | grep -q 'application/epub+zip$'
+if ! [ "${FILE##*.}" = "epub" ]
 then
-  exit_with_warning "$FILE is not an .epub file."
+    exit_with_warning "$FILE is not an .epub file."
 fi
 
 if ! fc-list | grep -i "$FONT" > /dev/null
@@ -53,8 +49,7 @@ ebook-convert "$FILE" "$NEW_FILE" \
     &> /dev/null
 
 if [ $? -eq 0 ]; then
-    echo -e "${GREEN}$1${NONE}" "Created $NEW_FILE"
-    FILE=$NEW_FILE
+    echo -e "\033[0;32mCreated $NEW_FILE\033[0m"
 else
     exit_with_warning "Conversion failed."
 fi

@@ -24,6 +24,9 @@ CONTAINER_IN=/converter/$FILENAME
 CONTAINER_OUT=/converter/$(basename "${1}" ".${1##*.}").pdf
 HOST_OUT=$(dirname $1)/$(basename "${1}" ".${1##*.}").pdf
 
-touch $HOST_OUT
+if ! [ -e "$HOST_OUT" ]
+then
+    touch $HOST_OUT
+fi
 
 docker run --rm -v "$HOST_IN":"$CONTAINER_IN" -v "$HOST_OUT":"$CONTAINER_OUT" ghcr.io/fjelloverflow/epub-to-remarkable-pdf:latest "$CONTAINER_IN"

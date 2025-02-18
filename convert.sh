@@ -49,7 +49,7 @@ ebook-convert "$FILE" "$NEW_FILE" \
     &> /dev/null
 
 if [ $? -eq 0 ]; then
-    echo -e "\033[0;32mCreated $NEW_FILE\033[0m"
+    echo -e "\033[0;32mCreated $(basename $NEW_FILE)\033[0m"
 else
     exit_with_warning "Conversion failed."
 fi

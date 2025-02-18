@@ -19,7 +19,7 @@ fi
 
 FILENAME=$(basename "$1")
 
-HOST_IN=$1
+HOST_IN=$(realpath $1)
 CONTAINER_IN=/converter/$FILENAME
 CONTAINER_OUT=/converter/$(basename "${1}" ".${1##*.}").pdf
 HOST_OUT=$(dirname $1)/$(basename "${1}" ".${1##*.}").pdf

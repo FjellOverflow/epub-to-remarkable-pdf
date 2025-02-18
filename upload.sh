@@ -43,6 +43,7 @@ curl -s -o /dev/null \
     -F "file=@$FILE;filename=$(basename "$FILE");type=application/pdf"
 
 
+# report back result
 if [ $? -eq 0 ]
 then
     echo -e "\033[0;32mUpload successful\033[0m"

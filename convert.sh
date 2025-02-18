@@ -8,6 +8,7 @@ exit_with_warning () {
     exit 1
 }
 
+# check that filepath given, file exists and is epub
 if [ -z "$FILE" ]
 then
     exit_with_warning "No filepath supplied."
@@ -23,6 +24,7 @@ then
     exit_with_warning "$FILE is not an .epub file."
 fi
 
+# check calibre and 'Georgia' font is installed on system
 if ! fc-list | grep -i "$FONT" > /dev/null
 then
     exit_with_warning "Font '$FONT' is not installed."
@@ -33,6 +35,7 @@ then
     exit_with_warning "Calibre not installed."
 fi
 
+# calculate new filename and quietly run calibre conversion command
 NEW_FILE=$(dirname "$FILE")/$(basename "$FILE" .epub).pdf
 
 ebook-convert "$FILE" "$NEW_FILE" \
@@ -48,6 +51,7 @@ ebook-convert "$FILE" "$NEW_FILE" \
     --pdf-serif-family $FONT \
     &> /dev/null
 
+# report back result
 if [ $? -eq 0 ]; then
     echo -e "\033[0;32mCreated $(basename $NEW_FILE)\033[0m"
 else

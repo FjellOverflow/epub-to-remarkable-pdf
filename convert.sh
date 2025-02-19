@@ -53,7 +53,8 @@ ebook-convert "$FILE" "$NEW_FILE" \
 
 # report back result
 if [ $? -eq 0 ]; then
-    echo -e "\033[0;32mCreated $(basename $NEW_FILE)\033[0m"
+    NEW_FILE_BASE=$(basename "$NEW_FILE")
+    echo -e "\033[0;32mCreated '$NEW_FILE_BASE'\033[0m"
 else
     exit_with_warning "Conversion failed."
 fi

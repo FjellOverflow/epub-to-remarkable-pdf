@@ -19,16 +19,16 @@ then
 fi
 
 # calculate volume mappings for in- and output
-HOST_IN=$(realpath $1)
+HOST_IN=$(realpath "$1")
 CONTAINER_IN=/converter/$(basename "$1")
 CONTAINER_OUT=/converter/$(basename "${1}" ".${1##*.}").pdf
-HOST_OUT=$(dirname $1)/$(basename "${1}" ".${1##*.}").pdf
+HOST_OUT=$(dirname "$1")/$(basename "${1}" ".${1##*.}").pdf
 
 # create dummy output file so docker wont map volume as a new directory
 if ! [ -e "$HOST_OUT" ]
 then
-    touch $HOST_OUT
+    touch "$HOST_OUT"
 fi
 
 # run conversion command inside temporary container
-docker run --rm -v "$HOST_IN":"$CONTAINER_IN" -v "$HOST_OUT":"$CONTAINER_OUT" ghcr.io/fjelloverflow/epub-to-remarkable-pdf:latest "$CONTAINER_IN"
+docker run --rm -v "$HOST_IN:$CONTAINER_IN" -v "$HOST_OUT:$CONTAINER_OUT" ghcr.io/fjelloverflow/epub-to-remarkable-pdf:latest "$CONTAINER_IN"

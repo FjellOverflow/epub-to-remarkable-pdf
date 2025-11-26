@@ -13,7 +13,7 @@ There are two versions of the conversion script. The default `convert.sh` conver
 ## *Recommended:* Convert `.epub` to `.pdf` (Docker)
 
 >[!NOTE]
->To use the local script, you need [Docker](https://docs.docker.com/get-started/get-docker/) installed on your system.
+>To use the containerized script, you need [Docker](https://docs.docker.com/get-started/get-docker/) installed on your system.
 
 Simply copy the following command to your terminal and adjust the file path.
 
